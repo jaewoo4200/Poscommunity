@@ -1,0 +1,30 @@
+{% extends 'base_accounts.html' %}
+
+{% block title %}Poscommunity-로그인{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+      <div class="col-lg-4 col-md-6 col-sm-8">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">로그인</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+              <input type="hidden" name="next" value="{{ next }}">
+              {% include 'includes/form.html' %}
+              <button type="submit" class="btn btn-primary btn-block">로그인</button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-center">
+            아이디가 없으신가요? <a href="{% url 'signup' %}">회원가입</a>
+          </div>
+        </div>
+        <div class="text-center py-2">
+          <small>
+            <a href="{% url 'password_reset' %}" class="text-muted">비밀번호가 기억나지 않나요?</a>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
